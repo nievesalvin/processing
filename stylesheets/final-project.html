@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.13/p5.js">
+    </script>
+    <script>
+        var ufoX;
+        var ufoY = 50;
+        var bullets = []
+        var enemy = []
+
+        function setup() {
+            createCanvas(500, 500);
+        }
+
+        function draw() {
+            background(0);
+            drawUfo();
+
+            for (var i = 0; i < bullets.length; i++){
+                bullets[i].move()
+                bullets[i].display()
+            }
+
+            for (var i = 0; i < enemy.length; i++) {
+                enemy[i].display()
+                enemy[i].move()
+            }
+
+        }
+
+        function drawUfo() {
+            ufoX = mouseX - 25;
+            fill(0, 198, 0, 225);
+            rect(ufoX - 10, ufoY + 12, 20, 22);
+            fill(100, 100, 100);
+            ellipse(ufoX, ufoY, 60, 30);
+            fill(150, 100, 200);
+            ellipse(ufoX, ufoY - 5, 32, 20);
+
+
+        }
+
+        function Bullet() {
+            this.x = ufoX
+            this.y = ufoY
+            this.move = function() {
+                this.y += 5
+
+            }
+            this.display = function() {
+                fill(0, 198, 0)
+                rect(this.x - 5, this.y + 25, 12.5, 10)
+
+            }
+        }
+
+        function mousePressed() {
+            bullets.push(new Bullet())
+        }
+
+
+
+        function Enemy() {
+            this.x = random(0, 500);
+            this.y = random(400, 500);
+            this.red = random(255);
+            this.green = random(255);
+            this.blue = random(255);
+
+            this.display = function() {
+                stroke(this.red, this.green, this.blue);
+                noFill();
+                rect(this.x, this.y, 40, 40);
+
+                this.move = function() {
+                    this.y -= 2
+                }
+
+            }
+
+        }
+
+
+            function Collide(){
+                if(Bullet() == this.x && Bullet() == this.y){
+                    fill(0)
+                    score++
+                }
+            }   
+
+
+        function keyPressed() {
+            enemy.push(new Enemy());
+        }
+        
+        
+    </script>
+</head>
+
+<body>
+<form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
+
+</body>
+
+</html>
