@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>Processing Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.13/p5.js"></script>
+    <script>
+        function setup() {
+            createCanvas(500, 500);
+            background(0);
+
+        }
+
+        function draw() {}
+
+        function mousePressed() {
+            strokeWeight(2);
+            stroke(255);
+            fill(0, 0, random(255));
+            triangle(random(500), random(500), random(500), random(500), random(500), random(500));
+        }
+
+        function keyPressed() {
+            if (keyCode == LEFT_ARROW) {
+                strokeWeight(2);
+                stroke(255)
+                fill(random(255), 0, 0);
+                ellipse(random(500), random(500), random(100), random(100));
+            }
+            else {
+                strokeWeight(2);
+                stroke(255);
+                fill(0, random(255), 0);
+                rect(random(500), random(500), random(100), random(100));
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
